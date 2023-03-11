@@ -1,8 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.lang.System.exit;
-
 public class Register {
     private double balance;
     private double sumOfShopping;
@@ -22,7 +20,7 @@ public class Register {
     }
     public void addItem(Item i, int quantity){
         this.currentBuy += (i.getPrice() * quantity);
-        this.currentBuyItems.add(new RowInAccount(i.getPrice(),quantity));
+        this.currentBuyItems.add(new RowInAccount(i.getPrice(), i.getName(),quantity));
     }
     public String getCurrentBuyItems(){
         String currentBuyItemsList = "Items list: \n";
@@ -35,25 +33,39 @@ public class Register {
         return currentBuy;
     }
 
+    /**
+     * Handles the payment of the buy
+     * */
     public double acceptPayment(double cash){
-        double diff = cash - this.currentBuy;
-        if (diff < 0){
+        double diff = cash - this.currentBuy; // calc the diff to return
+        if (diff < 0){ // if the buy is valid
             System.out.println("Not enough money");
             return -1;
         }
-        else {
+        else { // add the values of buy and reset others
             this.sumOfShopping += this.currentBuy;
             this.balance += this.currentBuy;
             this.currentBuy = 0;
-            this.currentBuyItems = new ArrayList<>();
+
         }
         return diff;
     }
+    /**
+     * return the balance of register
+     * */
     public double getBalance(){
         return balance;
     }
-
-
+    /**
+     * return total of the registry
+     * */
+    public double getSumOfShopping() {
+        return sumOfShopping;
+    }
+    public void cancelBuy(){
+        this.currentBuyItems = new ArrayList<>();
+        this.currentBuy = 0;
+    }
     @Override
     public String toString() {
         return "Register{" +
