@@ -46,7 +46,7 @@ public class Register {
             this.sumOfShopping += this.currentBuy;
             this.balance += this.currentBuy;
             this.currentBuy = 0;
-            this.currentBuyItems = new ArrayList<>();
+
         }
         return diff;
     }
@@ -62,7 +62,10 @@ public class Register {
     public double getSumOfShopping() {
         return sumOfShopping;
     }
-
+    public void cancelBuy(){
+        this.currentBuyItems = new ArrayList<>();
+        this.currentBuy = 0;
+    }
     @Override
     public String toString() {
         return "Register{" +
