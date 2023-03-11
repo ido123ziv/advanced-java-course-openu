@@ -20,10 +20,8 @@ public class RowInAccount {
 
     @Override
     public String toString() {
-        return "RowInAccount{" +
-                "priceOfItem=" + priceOfItem +
+        return "priceOfItem=" + priceOfItem +
                 ", quantity=" + quantity +
-                ", totalSum=" + totalSum +
-                '}';
+                ", totalSum=" + totalSum;
     }
 }
