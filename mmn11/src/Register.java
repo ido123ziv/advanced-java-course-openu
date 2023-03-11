@@ -56,7 +56,12 @@ public class Register {
     public double getBalance(){
         return balance;
     }
-
+    /**
+     * return total of the registry
+     * */
+    public double getSumOfShopping() {
+        return sumOfShopping;
+    }
 
     @Override
     public String toString() {
