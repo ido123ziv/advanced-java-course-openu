@@ -6,14 +6,21 @@ public class Item {
         this.price = p;
     }
 
+    /**
+     * return the price of the Item
+     * */
     public double getPrice() {
         return price;
     }
-
+    /**
+     * return the name of the Item
+     * */
     public String getName() {
         return name;
     }
-
+    /**
+     * Updates the Item price
+     * */
     public void setPrice(double price) {
         this.price = price;
     }
