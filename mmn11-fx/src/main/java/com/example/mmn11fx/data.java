@@ -18,7 +18,17 @@ public class data {
     }};
     public static String currentYear;
 
-    public static List<Integer> getCurrentYear(){
+    public static List<Integer> getCurrentYear(String year){
+        if (year != ""){
+            List<String> l = new ArrayList<String>(data.avgTemp.keySet());
+            int i = l.indexOf(year);
+            if (i + 1 == l.size()){
+                currentYear = l.get(0);
+                return data.avgTemp.get(l.get(0));
+            }
+            currentYear = l.get(i+1);
+            return data.avgTemp.get(l.get(i+1));
+        }
         Optional<String> keyOPtional = data.avgTemp.keySet().stream().findFirst();
         if (keyOPtional.isPresent()) {
             String key = keyOPtional.get();
@@ -26,8 +36,6 @@ public class data {
             return data.avgTemp.get(key);
         }
         // default
-        data.currentYear = "2021";
-        return data.avgTemp.get("2021");
-
+        return List.of();
     }
 }

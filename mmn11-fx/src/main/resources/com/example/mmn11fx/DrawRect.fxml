@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.canvas.Canvas?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import com.example.mmn11fx.DrawRectController?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mmn11fx.DrawRectController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mmn11fx.DrawRectController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     </columnConstraints>
@@ -16,7 +14,8 @@
         <RowConstraints maxHeight="194.0" minHeight="10.0" prefHeight="35.33335876464844" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
-        <Button mnemonicParsing="false" onAction="#drawRect" text="draw  Rect" GridPane.halignment="CENTER" GridPane.rowIndex="10" GridPane.valignment="CENTER" />
-        <Canvas fx:id="canv" height="364.0" width="599.0" />
+        <Canvas fx:id="canv" height="400.0" width="400.0" />
+      <Button mnemonicParsing="false" onAction="#drawRect" prefHeight="40.0" prefWidth="80.0" text="Button" GridPane.halignment="LEFT" GridPane.valignment="TOP" />
+      <Label fx:id="title" GridPane.valignment="BOTTOM" GridPane.halignment="CENTER" text="Label" />
     </children>
 </GridPane>

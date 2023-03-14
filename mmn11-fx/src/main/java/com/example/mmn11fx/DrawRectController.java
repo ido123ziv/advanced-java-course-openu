@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 
 import java.util.List;
@@ -11,18 +12,21 @@ import java.util.List;
 public class DrawRectController {
     @FXML
     private Canvas canv;
-
+    @FXML
+    private Label title;
     private GraphicsContext gc;
 
     public void initialize() {
         gc = canv.getGraphicsContext2D();
-        List<Integer> li = data.getCurrentYear();
-        drawBars(li);
+        data.currentYear = "";
     }
 
     @FXML
     void drawRect(ActionEvent event) {
 //        gc.setFill(Color.GRAY);
+        gc.clearRect(0, 0, canv.getWidth(), canv.getHeight());
+        List<Integer> li = data.getCurrentYear(data.currentYear);
+        drawBars(li);
         // x y width height
 //        gc.fillRect(0, 0, 100, 200);
     }
@@ -45,6 +49,7 @@ public class DrawRectController {
            gc.strokeText("" + li.get(i) + "",(i *  delimiter *2) + xc  ,yc + ( delimiter* yLocation));
 
         }
+        title.setText(data.currentYear);
 //        gc.strokeLine(0, yc + li.get(highestIndex) * delimiter, delimiter, li.get(highestIndex) * delimiter );
 
     }
