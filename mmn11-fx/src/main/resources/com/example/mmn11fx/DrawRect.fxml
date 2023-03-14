@@ -3,7 +3,6 @@
 <?import javafx.scene.canvas.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mmn11fx.DrawRectController">
     <columnConstraints>
@@ -15,7 +14,7 @@
     </rowConstraints>
     <children>
         <Canvas fx:id="canv" height="400.0" width="400.0" />
-      <Button mnemonicParsing="false" onAction="#drawRect" prefHeight="40.0" prefWidth="80.0" text="Button" GridPane.halignment="LEFT" GridPane.valignment="TOP" />
-      <Label fx:id="title" GridPane.valignment="BOTTOM" GridPane.halignment="CENTER" text="Label" />
+      <Button mnemonicParsing="false" onAction="#drawRect" prefHeight="40.0" prefWidth="80.0" text="Next Year" GridPane.halignment="LEFT" GridPane.valignment="TOP" />
+      <Label fx:id="title" text="Label" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" />
     </children>
 </GridPane>

@@ -19,23 +19,34 @@ public class DrawRectController {
     public void initialize() {
         gc = canv.getGraphicsContext2D();
         data.currentYear = "";
+        drawLines();
     }
 
     @FXML
     void drawRect(ActionEvent event) {
 //        gc.setFill(Color.GRAY);
         gc.clearRect(0, 0, canv.getWidth(), canv.getHeight());
+        drawLines();
         List<Integer> li = data.getCurrentYear(data.currentYear);
         drawBars(li);
         // x y width height
 //        gc.fillRect(0, 0, 100, 200);
     }
+    public void drawLines(){
+        double startPoint = canv.getHeight() / 12, delimiter = 11;
+        gc.strokeLine(startPoint * 2,startPoint *2,  startPoint * 2, canv.getHeight() - 2*startPoint);
+        gc.strokeLine(startPoint * 2,canv.getHeight() - 2* startPoint, canv.getWidth()-startPoint, canv.getHeight() - 2 * startPoint);
+        for (int i = 0; i < 12 ; i++){
+            gc.strokeText("" + (i + 1),(i *  delimiter * 2) + (startPoint) *2.5  ,canv.getHeight() -startPoint - delimiter);
+        }
 
+    }
     public void drawBars(List<Integer> li){
         int barCount = li.size(), delimiter = (barCount -1);
-        double xc = (canv.getWidth() - (delimiter * 10)) /barCount;
-        double yc = (canv.getHeight()) / 3;
+        double xc = canv.getWidth() / barCount;
+//        double yc = (canv.getHeight() - 100) / barCount;
         int highestIndex = getHighestIndex(li), lowestIndex = getLowestIndex(li);
+        double yc = canv.getHeight() - 2 *(canv.getHeight() / 12) - delimiter - (li.get(highestIndex) * delimiter) ;
         for (int i = 0; i < barCount ; i ++){
            if (i == highestIndex) gc.setFill(Color.RED);
            else if (i == lowestIndex) {
@@ -43,12 +54,14 @@ public class DrawRectController {
            }
            else gc.setFill(Color.GRAY); // if all are equal then make them gray
            int yLocation = li.get(highestIndex) -  li.get(i);
-           gc.fillRect((i *  delimiter *2) + xc , yc + ( delimiter* yLocation), delimiter, (li.get(i) * delimiter));
+           gc.fillRect((i *  delimiter *2) + xc * 2.5 , yc + ( delimiter* yLocation), delimiter, (li.get(i) * delimiter));
            gc.setFill(Color.BLACK);
-           gc.strokeText("" + (i + 1),(i *  delimiter * 2) + xc  ,delimiter + yc + ( delimiter* li.get(highestIndex)));
-           gc.strokeText("" + li.get(i) + "",(i *  delimiter *2) + xc  ,yc + ( delimiter* yLocation));
+//           gc.strokeText("" + (i + 1),(i *  delimiter * 2) + xc  ,delimiter + yc + ( delimiter* li.get(highestIndex)));
+           gc.strokeText("" + li.get(i) + "",(i *  delimiter *2) + xc * 2.5  ,yc + ( delimiter* yLocation) - delimiter);
 
         }
+//        gc.strokeLine(xc -1, 100, xc -1, yc);
+//        gc.strokeLine(xc, delimiter + yc + ( delimiter* li.get(highestIndex)), xc + (barCount * delimiter * 2), delimiter + yc + ( delimiter* li.get(highestIndex)) );
         title.setText(data.currentYear);
 //        gc.strokeLine(0, yc + li.get(highestIndex) * delimiter, delimiter, li.get(highestIndex) * delimiter );
 
