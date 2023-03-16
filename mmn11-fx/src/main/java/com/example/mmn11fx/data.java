@@ -9,13 +9,13 @@ public class data {
      */
     public static Map<String, List<Integer>> avgTemp = new HashMap<>() {{
         put("2017", new ArrayList<>(Arrays.asList(
-                20, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11)));
+                5, 21, 19, 9, 20, 15, 2, 15, 15, 18, 8, 2)));
         put("2018", new ArrayList<>(Arrays.asList(
-        1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12)));
+                 16, 21, 2, 8, 6, 20, 15, 12, 11, 17, 19, 14)));
         put("2019", new ArrayList<>(Arrays.asList(
-        2, 3, 4, 5, 6, 7, 8, 19, 10, 11, 12, 13)));
+                21, 5, 10, 2, 23, 7, 12, 21, 0, 11, 14, 9)));
         put("2020", new ArrayList<>(Arrays.asList(
-        3, 4, 5, 6, 7, 28, 9, 10, 11, 12, 13, 14)));
+                9, 13, 17, 4, 5, 21, 9, 2, 10, 8, 22, 12)));
         put("2021", new ArrayList<>(Arrays.asList(
         4, 5, 6, 7, 8, 9, 10, 11, 12, 23, 14, 15)));
     }};

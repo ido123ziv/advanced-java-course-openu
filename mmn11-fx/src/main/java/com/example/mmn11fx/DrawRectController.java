@@ -40,10 +40,16 @@ public class DrawRectController {
      */
     public void drawLines(){
         double startPoint = canv.getHeight() / 12, delimiter = 11;
-        gc.strokeLine(startPoint * 2,startPoint *2,  startPoint * 2, canv.getHeight() - 2*startPoint);
-        gc.strokeLine(startPoint * 2,canv.getHeight() - 2* startPoint, canv.getWidth()-startPoint, canv.getHeight() - 2 * startPoint);
+        double y = 100, x = canv.getWidth() / 12;
+        gc.strokeLine(startPoint * 2,startPoint *2,  startPoint * 2, canv.getHeight() - 2 * startPoint); // vertical
+        gc.strokeLine(startPoint * 2,canv.getHeight() - 2* startPoint, canv.getWidth()-startPoint, canv.getHeight() - 2 * startPoint); // horizontal
         for (int i = 0; i < 12 ; i++){
-            gc.strokeText("" + (i + 1),(i *  delimiter * 2) + (startPoint) *2.5  ,canv.getHeight() -startPoint - delimiter);
+            double v = (i * delimiter * 2) + x * 2.5 ;
+            gc.strokeText("" + (i + 1), v,canv.getHeight() -startPoint - delimiter);
+            if (i < 11) { // yaxis
+                gc.strokeText("" + (10 - i) * 5 + "", startPoint * 2 - (2 * delimiter), y);
+                y = y +  2* delimiter;
+            }
         }
     }
 
@@ -68,8 +74,6 @@ public class DrawRectController {
            gc.fillRect((i *  delimiter *2) + xc * 2.5 , yc + ( delimiter* yLocation), delimiter, (li.get(i) * delimiter));
            gc.setFill(Color.BLACK); // data labels
            gc.strokeText("" + li.get(i) + "",(i *  delimiter *2) + xc * 2.5  ,yc + ( delimiter* yLocation) - delimiter);
-            if (i % 5 == 0) // yaxis
-                gc.strokeText("" + li.get(i) + "",xc * 2 - (2* delimiter)  ,yc + ( delimiter* yLocation) - delimiter);
 
         }
         title.setText(data.currentYear);
