@@ -4,6 +4,7 @@ package com.example.mmn11fx;
 import java.util.*;
 
 public class data {
+    public static final int BAR_SIZE = 5;
     /**
      * a map to hold the year and values together, keys are years and values are list of values.
      */

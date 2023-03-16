@@ -44,10 +44,10 @@ public class DrawRectController {
         gc.strokeLine(startPoint * 2,startPoint *2,  startPoint * 2, canv.getHeight() - 2 * startPoint); // vertical
         gc.strokeLine(startPoint * 2,canv.getHeight() - 2* startPoint, canv.getWidth()-startPoint, canv.getHeight() - 2 * startPoint); // horizontal
         for (int i = 0; i < 12 ; i++){
-            double v = (i * delimiter * 2) + x * 2.5 ;
+            double v = (i * delimiter * 2) + x * data.BAR_SIZE / 2 ;
             gc.strokeText("" + (i + 1), v,canv.getHeight() -startPoint - delimiter);
             if (i < 11) { // yaxis
-                gc.strokeText("" + (10 - i) * 5 + "", startPoint * 2 - (2 * delimiter), y);
+                gc.strokeText("" + (10 - i) * data.BAR_SIZE + "", startPoint * 2 - (2 * delimiter), y);
                 y = y +  2* delimiter;
             }
         }
@@ -60,19 +60,20 @@ public class DrawRectController {
     public void drawBars(List<Integer> li){
         // setting constraints
         int barCount = li.size(), delimiter = (barCount -1);
-        double xc = canv.getWidth() / barCount;
+        double baseX = canv.getWidth() / barCount;
         // getting edges
         int highestIndex = getHighestIndex(li), lowestIndex = getLowestIndex(li);
-        double yc = canv.getHeight() - 2 *(canv.getHeight() / 12) - delimiter;//  - (li.get(highestIndex) * delimiter) ;
+        double baseY = canv.getHeight() - 2 *(canv.getHeight() / barCount) - delimiter;
         for (int i = 0; i < barCount ; i ++){
            if (i == highestIndex) gc.setFill(Color.RED); // setting colors
            else if (i == lowestIndex) {
                gc.setFill(Color.BLUE);
            }
            else gc.setFill(Color.GRAY); // if all are equal then make them gray
-           gc.fillRect((i *  delimiter *2) + xc * 2.5 , yc - (li.get(i) * 5), delimiter, (li.get(i) * 5));
+           double xcordinate = (i * delimiter * 2) + baseX * data.BAR_SIZE / 2;
+            gc.fillRect(xcordinate, baseY - (li.get(i) * data.BAR_SIZE), delimiter, (li.get(i) * data.BAR_SIZE));
            gc.setFill(Color.BLACK); // data labels
-           gc.strokeText("" + li.get(i) + "",(i *  delimiter *2) + xc * 2.5  ,yc - (li.get(i) * 5) - delimiter);
+           gc.strokeText("" + li.get(i) + "", xcordinate,baseY - (li.get(i) * data.BAR_SIZE) - delimiter);
 
         }
         title.setText(data.currentYear);
