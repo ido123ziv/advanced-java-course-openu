@@ -63,17 +63,16 @@ public class DrawRectController {
         double xc = canv.getWidth() / barCount;
         // getting edges
         int highestIndex = getHighestIndex(li), lowestIndex = getLowestIndex(li);
-        double yc = canv.getHeight() - 2 *(canv.getHeight() / 12) - delimiter - (li.get(highestIndex) * delimiter) ;
+        double yc = canv.getHeight() - 2 *(canv.getHeight() / 12) - delimiter;//  - (li.get(highestIndex) * delimiter) ;
         for (int i = 0; i < barCount ; i ++){
            if (i == highestIndex) gc.setFill(Color.RED); // setting colors
            else if (i == lowestIndex) {
                gc.setFill(Color.BLUE);
            }
            else gc.setFill(Color.GRAY); // if all are equal then make them gray
-           int yLocation = li.get(highestIndex) -  li.get(i); // needed in order to align the bars
-           gc.fillRect((i *  delimiter *2) + xc * 2.5 , yc + ( delimiter* yLocation), delimiter, (li.get(i) * delimiter));
+           gc.fillRect((i *  delimiter *2) + xc * 2.5 , yc - (li.get(i) * 5), delimiter, (li.get(i) * 5));
            gc.setFill(Color.BLACK); // data labels
-           gc.strokeText("" + li.get(i) + "",(i *  delimiter *2) + xc * 2.5  ,yc + ( delimiter* yLocation) - delimiter);
+           gc.strokeText("" + li.get(i) + "",(i *  delimiter *2) + xc * 2.5  ,yc - (li.get(i) * 5) - delimiter);
 
         }
         title.setText(data.currentYear);
