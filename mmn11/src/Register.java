@@ -46,6 +46,7 @@ public class Register {
             this.sumOfShopping += this.currentBuy;
             this.balance += this.currentBuy;
             this.currentBuy = 0;
+            this.currentBuyItems = new ArrayList<>();
 
         }
         return diff;

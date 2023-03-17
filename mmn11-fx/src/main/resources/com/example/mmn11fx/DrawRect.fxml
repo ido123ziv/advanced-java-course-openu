@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mmn11fx.DrawRectController">
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints maxHeight="364.66664123535156" minHeight="10.0" prefHeight="364.66664123535156" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="194.0" minHeight="10.0" prefHeight="35.33335876464844" vgrow="SOMETIMES" />
+    </rowConstraints>
+    <children>
+        <Canvas fx:id="canv" height="400.0" width="400.0" />
+      <Button mnemonicParsing="false" onAction="#drawRect" prefHeight="40.0" prefWidth="80.0" text="Next Year" GridPane.halignment="LEFT" GridPane.valignment="TOP" />
+      <Label fx:id="title" text="Label" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" />
+    </children>
+</GridPane>
