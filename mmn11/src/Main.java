@@ -87,9 +87,17 @@ public class Main {
                         "0 - milk, 1 - eggs, 2 - tea, 3 - honey\n" +
                         "enter the num please\n");
                 int itemIndex = sc.nextInt();
+                if (new ArrayList<Integer>() {{
+                    add(0);
+                    add(1);
+                    add(2);
+                    add(3);
+                } }.contains(itemIndex)){
                 System.out.println("How many would you like?\n");
                 int q = sc.nextInt();
-                R.addItem(li.get(itemIndex), q);
+                if (q >= 0)
+                    R.addItem(li.get(itemIndex), q);
+                }
             }
             case 2 -> System.out.println(R.getCurrentBuySum());
             case 3 -> {
