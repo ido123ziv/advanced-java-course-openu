@@ -242,17 +242,17 @@ public class BigInt implements Comparable{
         if (b.bigIntList.size() == 0 || b.bigIntList.get(0) == 0)
             throw new ArithmeticException();
         BigInt result = new BigInt();
-        BigInt divider = new BigInt(this.bigIntList, this.isPositive);
-        BigInt counter = new BigInt(b.bigIntList, b.isPositive);
-        BigInt sum = new BigInt(b.bigIntList, b.isPositive);
+        BigInt divider = clone(this);
+        BigInt saveOrigin = clone(b);
+        BigInt sum = clone(saveOrigin);
         BigInt one = new BigInt("+1");
-        while (compareWithoutSign(divider, sum) <= 0){
+        while (compareWithoutSign(sum, divider) <= 0){ // counting how many times b in current items
             result = result.plus(one);
-            sum = sum.plus(counter);
+            sum = sum.plus(saveOrigin);
         }
-        if (divider.compareTo(sum) == 0)
+        if (divider.compareTo(sum) == 0)  // if exact match
             result = result.plus(one);
-        result.isPositive = this.isPositive == b.isPositive;
+        result.isPositive = this.isPositive == b.isPositive; // sign is determined by the equality of the signs
         return result;
 
     }
@@ -298,9 +298,9 @@ public class BigInt implements Comparable{
             return -1;
         for (int i = b2.bigIntList.size() -1; i >= 0; i --){
             if (b1.bigIntList.get(i) > b2.bigIntList.get(i))
-                return -1;
-            if (b1.bigIntList.get(i) < b2.bigIntList.get(i))
                 return 1;
+            if (b1.bigIntList.get(i) < b2.bigIntList.get(i))
+                return -1;
         }
         return 0;
     }
