@@ -25,7 +25,8 @@ public class Main {
         Elevator e2 = new Elevator("second batch Elevator alarm", 17);
 
         TestAlarms testFirstBatch = new TestAlarms();
-        testFirstBatch.process(alarmList1);        ArrayList<Alarm> alarmList2 = new ArrayList<Alarm>() {{
+        testFirstBatch.process(alarmList1);
+        ArrayList<Alarm> alarmList2 = new ArrayList<Alarm>() {{
             add(s3);
             add(s4);
             add(f3);

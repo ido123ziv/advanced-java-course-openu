@@ -24,6 +24,7 @@ public class Elevator extends Alarm{
      * reset the floor for the elevator
      */
     public void reset(){
+
         floor = 0;
     }
 }

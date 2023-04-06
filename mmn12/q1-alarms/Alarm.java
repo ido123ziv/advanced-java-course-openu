@@ -33,6 +33,7 @@ public class Alarm {
      * */
     @Override
     public String toString() {
+
         return date.toString();
     }
 
@@ -40,7 +41,8 @@ public class Alarm {
      * This method set's details about the alarm
      * */
     public void action(){
-        System.out.println("Alarm at: " + address + "\nTime of Alarm:" + date.toString());
+
+        System.out.println("Alarm at: " + address + "\nTime of Alarm: " + date.toString());
     }
 
 }
