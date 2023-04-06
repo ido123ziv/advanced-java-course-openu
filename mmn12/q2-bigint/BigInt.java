@@ -239,9 +239,9 @@ public class BigInt implements Comparable{
     public int compareWithoutSign(BigInt b1, BigInt b2){
  // numbers not same length are not equal
         if (b1.bigIntList.size() > b2.bigIntList.size())
-            return -1;
-        if (b1.bigIntList.size() < b2.bigIntList.size())
             return 1;
+        if (b1.bigIntList.size() < b2.bigIntList.size())
+            return -1;
         for (int i = b2.bigIntList.size() -1; i >= 0; i --){
             if (b1.bigIntList.get(i) > b2.bigIntList.get(i))
                 return -1;
