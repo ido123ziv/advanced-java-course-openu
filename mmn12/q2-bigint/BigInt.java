@@ -64,4 +64,22 @@ public class BigInt implements Comparable{
         this.bigIntList.add(0);
         this.isPositive=true;
     }
+
+    /**
+     *
+     * @return a string representing BitInt
+     */
+    @Override
+    public String toString() {
+        String s = "";
+        if (this.isPositive)
+            s += '+';
+        else
+            s += '-';
+        for (int i = bigIntList.size() -1 ; i >= 0; i--){
+            s += bigIntList.get(i).toString();
+        }
+        return  s;
+    }
+
 }
