@@ -12,6 +12,9 @@ public class Fire extends Smoke{
         isActive = true;
     }
 
+    /**
+     * starts the alarm
+     */
     public void action(){
         super.action();
         isActive = false;
