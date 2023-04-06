@@ -94,7 +94,7 @@ public class BigInt implements Comparable{
             if (b1.bigIntList.size() >= i) // if didn't finish b1
                 x1 = b1.bigIntList.get(i);
             if (b2.bigIntList.size() >= i) // if didn't finish b2
-                x2 = b1.bigIntList.get(i);
+                x2 = b2.bigIntList.get(i);
             sum = x1 + x2 + carry;
             carry = sum / 10;  // this will set carry to 0 if sum is less than 10 otherwise will carry it
             if (sum > 9){ // if sum is two or more digits we need to take just the units digit
@@ -142,7 +142,7 @@ public class BigInt implements Comparable{
             newBigIntPositive = !b2.isPositive;
         }
         int x1=0,x2=0;
-        for (int i = 1; i < b1.bigIntList.size() ;i++) {
+        for (int i = 0; i < b1.bigIntList.size() ;i++) {
             x1 = bigger.bigIntList.get(i);
             x2=0;
             if (b2.bigIntList.size() >= i)
@@ -156,7 +156,7 @@ public class BigInt implements Comparable{
             newBigIntList.add(sum);
         }
         // removes 0's from beginning
-        while (newBigIntList.get(newBigIntList.size() - 1) == 0)
+        while (newBigIntList.size() > 0 && newBigIntList.get(newBigIntList.size() - 1) == 0)
             newBigIntList.remove(newBigIntList.size() -1 );
         return new BigInt(newBigIntList,newBigIntPositive);
     }
@@ -216,6 +216,8 @@ public class BigInt implements Comparable{
         for (int i = bigIntList.size() -1 ; i >= 0; i--){
             s += bigIntList.get(i).toString();
         }
+        if (bigIntList.size() == 0)
+            return "0";
         return  s;
     }
 
