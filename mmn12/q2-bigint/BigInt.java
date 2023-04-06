@@ -65,6 +65,7 @@ public class BigInt implements Comparable{
         this.isPositive=true;
     }
 
+
     /**
      *
      * @return a string representing BitInt
@@ -82,4 +83,26 @@ public class BigInt implements Comparable{
         return  s;
     }
 
+    /**
+     * determines if input BigInt is equal by value to current bigInt
+     * @param b1 -> BigInt to compare
+     * @return -> if the values are equal
+     */
+    public boolean compareWithoutSign(BigInt b1){
+        if (b1.bigIntList.size() != this.bigIntList.size())
+            return false; // numbers not same length are not equal
+        for (int i = this.bigIntList.size() -1; i >= 0; i --)
+            if (b1.bigIntList.get(i) != this.bigIntList.get(i))
+                return false;
+        return true;
+    }
+
+    /**
+     * implementing equals, only if two numbers are exact with same sign
+     * @param b -> BigInt to compare
+     * @return -> if BigInts are equal
+     */
+    public boolean equals(BigInt b) {
+        return this.isPositive == b.isPositive && compareWithoutSign(b);
+    }
 }
