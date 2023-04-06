@@ -91,9 +91,9 @@ public class BigInt implements Comparable{
         int jointLength = Math.max(b1.bigIntList.size(), b2.bigIntList.size()); // go for the larger big int
         for (int i = 0; i < jointLength; i ++){
             int x1 = 0, x2 = 0;
-            if (b1.bigIntList.size() >= i) // if didn't finish b1
+            if (b1.bigIntList.size() > i) // if didn't finish b1
                 x1 = b1.bigIntList.get(i);
-            if (b2.bigIntList.size() >= i) // if didn't finish b2
+            if (b2.bigIntList.size() > i) // if didn't finish b2
                 x2 = b2.bigIntList.get(i);
             sum = x1 + x2 + carry;
             carry = sum / 10;  // this will set carry to 0 if sum is less than 10 otherwise will carry it
