@@ -3,6 +3,9 @@ import java.util.ArrayList;
 public class TestAlarms {
     private int counter;
 
+    /**
+     * creates an instance of test alarm
+     */
     public TestAlarms(){
         
         counter = 0;
