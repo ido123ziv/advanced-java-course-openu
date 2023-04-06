@@ -220,6 +220,43 @@ public class BigInt implements Comparable{
     }
 
     /**
+     * helper method to clone a big int
+     * @param b -> BigInt to clone
+     * @return -> a deep copy clone of the BigInt
+     */
+    private BigInt clone(BigInt b){
+        ArrayList<Integer> newBigIntList = new ArrayList<Integer>();
+        for (Integer i: b.bigIntList){
+            newBigIntList.add(i);
+        }
+        return new BigInt(newBigIntList, b.isPositive);
+    }
+
+    /**
+     * divides current big int by b
+     * @param b -> BigInt to divide by
+     * @return -> the result of the division
+     * @throws ArithmeticException -> if trying to divide by zero
+     */
+    public BigInt divide(BigInt b) throws ArithmeticException{
+        if (b.bigIntList.size() == 0 || b.bigIntList.get(0) == 0)
+            throw new ArithmeticException();
+        BigInt result = new BigInt();
+        BigInt divider = new BigInt(this.bigIntList, this.isPositive);
+        BigInt counter = new BigInt(b.bigIntList, b.isPositive);
+        BigInt sum = new BigInt(b.bigIntList, b.isPositive);
+        BigInt one = new BigInt("+1");
+        while (compareWithoutSign(divider, sum) <= 0){
+            result = result.plus(one);
+            sum = sum.plus(counter);
+        }
+        if (divider.compareTo(sum) == 0)
+            result = result.plus(one);
+        result.isPositive = this.isPositive == b.isPositive;
+        return result;
+
+    }
+    /**
      *
      * @return a string representing BitInt
      */
