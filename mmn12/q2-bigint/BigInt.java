@@ -167,6 +167,11 @@ public class BigInt implements Comparable{
      * @return -> Big int of the current minus input
      */
     public BigInt minus(BigInt b){
+        if (this.isPositive == b.isPositive && !this.isPositive){
+            BigInt b1 = this.plus(new BigInt(b.bigIntList, true));
+            b1.isPositive = false;
+            return b1;
+        }
         return this.plus(new BigInt(b.bigIntList,!b.isPositive));
     }
 
