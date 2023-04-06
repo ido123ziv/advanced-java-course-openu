@@ -66,6 +66,11 @@ public class BigInt implements Comparable{
         this.isPositive=true;
     }
 
+    /**
+     * adds another big int to current
+     * @param b -> BigInt to add
+     * @return -> the sum result
+     */
     public BigInt plus(BigInt b){
         if (this.isPositive == b.isPositive) // if they share a sign
             return add(this,b);
@@ -156,6 +161,14 @@ public class BigInt implements Comparable{
         return new BigInt(newBigIntList,newBigIntPositive);
     }
 
+    /**
+     * subtract a big int from current
+     * @param b -> big int to subtract
+     * @return -> Big int of the current minus input
+     */
+    public BigInt minus(BigInt b){
+        return this.plus(new BigInt(b.bigIntList,!b.isPositive));
+    }
     /**
      *
      * @return a string representing BitInt
