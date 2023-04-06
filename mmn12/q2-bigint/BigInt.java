@@ -142,10 +142,10 @@ public class BigInt implements Comparable{
             newBigIntPositive = !b2.isPositive;
         }
         int x1=0,x2=0;
-        for (int i = 0; i < b1.bigIntList.size() ;i++) {
+        for (int i = 0; i < bigger.bigIntList.size() ;i++) {
             x1 = bigger.bigIntList.get(i);
             x2=0;
-            if (b2.bigIntList.size() >= i)
+            if (smaller.bigIntList.size() > i)
                 x2 = smaller.bigIntList.get(i);
             sum = x1 - x2 + tmp;
             tmp = 0;
@@ -170,6 +170,11 @@ public class BigInt implements Comparable{
         return this.plus(new BigInt(b.bigIntList,!b.isPositive));
     }
 
+    /**
+     * these methods multiples input with current
+     * @param b -> Big Int to multiply
+     * @return -> the multiplication of BigInts
+     */
     public BigInt multiply(BigInt b){
         BigInt res = new BigInt();
         int tmp;
@@ -180,6 +185,13 @@ public class BigInt implements Comparable{
         res.isPositive = this.isPositive == b.isPositive;
         return res;
     }
+
+    /**
+     *
+     * @param x -> current part of origin BigInt
+     * @param indexInBigInt -> index in big int we need (item in list)
+     * @return -> the indices of current multiplication
+     */
     private BigInt mul(int x, int indexInBigInt){
         ArrayList<Integer> newBigIntList = new ArrayList<Integer>();
         int sum, tmp = 0;
