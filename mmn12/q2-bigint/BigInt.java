@@ -88,13 +88,19 @@ public class BigInt implements Comparable{
      * @param b1 -> BigInt to compare
      * @return -> if the values are equal
      */
-    public boolean compareWithoutSign(BigInt b1){
-        if (b1.bigIntList.size() != this.bigIntList.size())
-            return false; // numbers not same length are not equal
-        for (int i = this.bigIntList.size() -1; i >= 0; i --)
-            if (b1.bigIntList.get(i) != this.bigIntList.get(i))
-                return false;
-        return true;
+    public int compareWithoutSign(BigInt b1){
+ // numbers not same length are not equal
+        if (b1.bigIntList.size() > this.bigIntList.size())
+            return -1;
+        if (b1.bigIntList.size() < this.bigIntList.size())
+            return 1;
+        for (int i = this.bigIntList.size() -1; i >= 0; i --){
+            if (b1.bigIntList.get(i) > this.bigIntList.get(i))
+                return -1;
+            if (b1.bigIntList.get(i) < this.bigIntList.get(i))
+                return 1;
+        }
+        return 0;
     }
 
     /**
@@ -103,6 +109,24 @@ public class BigInt implements Comparable{
      * @return -> if BigInts are equal
      */
     public boolean equals(BigInt b) {
-        return this.isPositive == b.isPositive && compareWithoutSign(b);
+        return this.isPositive == b.isPositive && compareWithoutSign(b) == 0;
+    }
+
+    /**
+     * Implementing compareTo
+     * @param o the object to be compared.
+     * @return -> who is bigger me is 1, o is -1, 0 is equal
+     */
+    @Override
+    public int compareTo(Object o) {
+        BigInt big = (BigInt)o;
+        if (big.isPositive != this.isPositive){ //signs are not equal
+            if (this.isPositive) return 1;
+            return -1;
+        }
+        int sign = 1;
+        if (!this.isPositive)//if the numbers are negative so the larger number is the one with the smaller by value
+            sign = -1;
+        return compareWithoutSign(big) * sign;
     }
 }
