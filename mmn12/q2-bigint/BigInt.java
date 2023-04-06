@@ -169,6 +169,39 @@ public class BigInt implements Comparable{
     public BigInt minus(BigInt b){
         return this.plus(new BigInt(b.bigIntList,!b.isPositive));
     }
+
+    public BigInt multiply(BigInt b){
+        BigInt res = new BigInt();
+        int tmp;
+        for (int i = 0; i < b.bigIntList.size(); i ++){
+            tmp = b.bigIntList.get(i);
+            res = res.plus(this.mul(tmp, i));
+        }
+        res.isPositive = this.isPositive == b.isPositive;
+        return res;
+    }
+    private BigInt mul(int x, int indexInBigInt){
+        ArrayList<Integer> newBigIntList = new ArrayList<Integer>();
+        int sum, tmp = 0;
+        for (int i = 0; i < indexInBigInt; i ++)
+            newBigIntList.add(0);
+        for (int i = 0; i < this.bigIntList.size(); i++){
+            sum = x * this.bigIntList.get(i);
+            sum += tmp;
+            tmp = 0;
+            while (sum - (tmp * 10) >= 10)
+                tmp += 1;
+            sum -= tmp * 10;
+            newBigIntList.add(sum);
+        }
+        while (tmp != 0){
+            newBigIntList.add(tmp % 10);
+            tmp = tmp / 10;
+        }
+        return new BigInt(newBigIntList, true);
+
+    }
+
     /**
      *
      * @return a string representing BitInt
