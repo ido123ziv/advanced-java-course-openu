@@ -32,13 +32,6 @@ public class FilesHandler {
         }
         return menuList;
     }
-//    private static File getFile() {
-//        FileChooser fc = new FileChooser();
-//        fc.setTitle("Please Choose File");
-//        fc.setInitialDirectory(new File("."));
-//        return fc.showOpenDialog(null);
-//    }
-
     public static void saveToFile(String name, String Content){
         try {
             File myObj = new File(name);
