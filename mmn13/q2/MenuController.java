@@ -40,9 +40,9 @@ public class MenuController {
             labels[i] = new Label(keys.get(i).name());
             labels[i].setPrefSize(textWidth, textHeight);
             labels[i].setId(keys.get(i).name());
+            labels[i].setStyle("-fx-font-weight: bold; -fx-underline: true; -fx-text-fill: gray;");
             grid.add(labels[i], colCounter, lastIndex);
             for (Item item : menuItems.get(keys.get(i))){
-//                colCounter++;
                 lastIndex++;
                 Label foodLabel = new Label(item.getDescription());
                 foodLabel.setPrefHeight(textHeight);
