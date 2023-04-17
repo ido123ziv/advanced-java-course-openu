@@ -1,4 +1,4 @@
-
+Label
 
 import javafx.event.ActionEvent;
 import javax.swing.JOptionPane;
@@ -26,6 +26,10 @@ public class MenuController {
     private ArrayList<CheckBox> checkBoxes;
 
     private Order order;
+
+    /**
+     * This method initialize the JavaFX Menu application!
+     */
     public void initialize() {
         Menu menu = new Menu(FilesHandler.getMenu());
         order = new Order();
@@ -72,6 +76,10 @@ public class MenuController {
         }
     }
 
+    /**
+     * This method handles clicking on the button and popping out the message window
+     * @param event
+     */
     @FXML
     void orderPressed(ActionEvent event) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -107,6 +115,10 @@ public class MenuController {
             resetMenu();
         }
     }
+
+    /**
+     * add to the order current checked items
+     */
     void addItemsToOrder(){
         int ls = itemsShown.size();
         for (int i =0; i< ls; i++){
@@ -116,6 +128,10 @@ public class MenuController {
             }
         }
     }
+
+    /**
+     * resets menu both visualize and logically
+     */
     void resetMenu(){
         for (CheckBox cb : checkBoxes){
             cb.setSelected(false);

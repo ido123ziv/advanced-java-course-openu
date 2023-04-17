@@ -1,4 +1,4 @@
-
+Label
 import javafx.stage.FileChooser;
 
 import java.io.*;
@@ -7,10 +7,14 @@ import java.util.Scanner;
 
 public class FilesHandler {
 
+    /**
+     * reads from file, get menu in a list form
+     * @return a list of items for menu
+     */
     public static ArrayList<Item> getMenu(){
         ArrayList<Item> menuList = new ArrayList<>();
         try {
-            File file = new File("src\\main\\java\\com\\example\\mmn13\\menu.txt");
+            File file = new File("q2\\menu.txt");
             Scanner scanner = new Scanner(file);
             String [] strings = new String[3];
             int counter = 0;
@@ -32,6 +36,12 @@ public class FilesHandler {
         }
         return menuList;
     }
+
+    /**
+     * this method write a string to a file
+     * @param name -> file name
+     * @param Content -> file content
+     */
     public static void saveToFile(String name, String Content){
         try {
             File myObj = new File(name);

@@ -1,4 +1,4 @@
-
+Label
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,6 +10,11 @@ public class Menu {
     private ArrayList<Item> drinks;
 
     private int itemsCounter;
+
+    /**
+     * constructor
+     * @param itemArrayList -> items to add to menu
+     */
     public Menu(ArrayList<Item> itemArrayList){
         this.appetizers = new ArrayList<>();
         this.mains= new ArrayList<>();
@@ -26,10 +31,18 @@ public class Menu {
         this.itemsCounter = this.appetizers.size() + this.mains.size() + this.deserts.size() + this.drinks.size();
     }
 
+    /**
+     * retrieves item count
+     * @return the amount of items in menu
+     */
     public int getItemsCounter() {
         return this.itemsCounter;
     }
 
+    /**
+     * add item to menu
+     * @param item -> new item to add
+     */
     public void addItem(Item item){
         switch (item.getType().name()){
             case "Appetizer" -> this.appetizers.add(item);
@@ -39,6 +52,10 @@ public class Menu {
         }
     }
 
+    /**
+     * current menu represented as a map
+     * @return -> a map with current menu items
+     */
     public HashMap<mealCourse,ArrayList<Item>> getMenu() {
         HashMap<mealCourse,ArrayList<Item>> mp = new HashMap<>(){{
             put(mealCourse.Appetizer, appetizers);
@@ -49,6 +66,10 @@ public class Menu {
         return mp;
     }
 
+    /**
+     * presents a text of the list
+     * @return -> string representation of the menu
+     */
     @Override
     public String toString() {
         return "Menu{" +
