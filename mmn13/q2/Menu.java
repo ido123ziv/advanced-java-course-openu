@@ -8,6 +8,8 @@ public class Menu {
     private ArrayList<Item> mains;
     private ArrayList<Item> deserts;
     private ArrayList<Item> drinks;
+
+    private int itemsCounter;
     public Menu(ArrayList<Item> itemArrayList){
         this.appetizers = new ArrayList<>();
         this.mains= new ArrayList<>();
@@ -21,6 +23,11 @@ public class Menu {
                 case "Drink" -> this.drinks.add(item);
             }
         }
+        this.itemsCounter = this.appetizers.size() + this.mains.size() + this.deserts.size() + this.drinks.size();
+    }
+
+    public int getItemsCounter() {
+        return this.itemsCounter;
     }
 
     public void addItem(Item item){

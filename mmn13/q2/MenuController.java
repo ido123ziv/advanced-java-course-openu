@@ -15,7 +15,7 @@ public class MenuController {
     private GridPane grid;
 
     @FXML
-    private TextField [] types;
+    private Label [] labels;
 
     @FXML
     private ComboBox<Integer> [] cbItems;
@@ -29,34 +29,39 @@ public class MenuController {
         order = new Order();
         HashMap<mealCourse, ArrayList<Item>> menuItems = menu.getMenu();
         ArrayList<mealCourse> keys = new ArrayList<>(menuItems.keySet());
-        types = new TextField[keys.size()];
+        labels = new Label[keys.size()];
         checkBoxes = new CheckBox [keys.size()];
         cbItems = new ComboBox[keys.size()];
-        double textSize = grid.getPrefWidth() / (keys.size() * keys.size());
-        double textHeight = grid.getPrefHeight() / (keys.size() * keys.size());
+        int dividerSize = keys.size() + menu.getItemsCounter();
+        double textWidth = grid.getPrefWidth() / dividerSize;
+        double textHeight = grid.getPrefHeight() / dividerSize;
         int lastIndex = 0, colCounter = 0;
         for (int i =0; i < keys.size(); i ++){
-            types[i] = new TextField(keys.get(i).name());
-            types[i].setPrefHeight(textHeight);
-            types[i].setPrefWidth(textSize);
-            types[i].setId(keys.get(i).name());
-            grid.add(types[i], colCounter, lastIndex);
+            labels[i] = new Label(keys.get(i).name());
+            labels[i].setPrefSize(textWidth, textHeight);
+            labels[i].setId(keys.get(i).name());
+            grid.add(labels[i], colCounter, lastIndex);
             for (Item item : menuItems.get(keys.get(i))){
 //                colCounter++;
                 lastIndex++;
-                TextField tf = new TextField(item.getDescription());
-                tf.setPrefHeight(textHeight);
-                tf.setPrefWidth(textSize);
-                grid.add(tf, colCounter,lastIndex);
-                CheckBox cb = new CheckBox();
+                Label foodLabel = new Label(item.getDescription());
+                foodLabel.setPrefHeight(textHeight);
+                foodLabel.setPrefSize(textWidth, textHeight);
+                grid.add(foodLabel, colCounter,lastIndex);
                 colCounter++;
+                Label priceLabel = new Label(Double.toString(item.getPrice()));
+                priceLabel.setPrefSize(textWidth, textHeight);
+                grid.add(priceLabel, colCounter,lastIndex);
+                colCounter++;
+                CheckBox cb = new CheckBox();
                 grid.add(cb, colCounter ,lastIndex);
                 ComboBox<Integer> comboBox = new ComboBox<>();
+                comboBox.getItems().addAll(1,2,3,4,5,6);
                 colCounter++;
                 grid.add(comboBox, colCounter ,lastIndex);
                 lastIndex++;
+                colCounter = 0;
             }
-            colCounter = 0;
         }
 
 
