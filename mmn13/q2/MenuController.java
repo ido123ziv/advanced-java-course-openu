@@ -1,6 +1,7 @@
 package com.example.mmn13;
 
 import javafx.event.ActionEvent;
+import javax.swing.JOptionPane;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
@@ -28,7 +29,6 @@ public class MenuController {
     public void initialize() {
         Menu menu = new Menu(FilesHandler.getMenu());
         order = new Order();
-
         HashMap<mealCourse, ArrayList<Item>> menuItems = menu.getMenu();
         ArrayList<mealCourse> keys = new ArrayList<>(menuItems.keySet());
         labels = new Label[keys.size()];
@@ -76,15 +76,12 @@ public class MenuController {
     void orderPressed(ActionEvent event) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation Dialog");
-        alert.setHeaderText("Are you sure you want to delete this item?");
+        alert.setHeaderText("Do you want to complete your order?");
         alert.setContentText("This action cannot be undone.");
-
         ButtonType confirm = new ButtonType("Confirm");
         ButtonType update = new ButtonType("Update");
         ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
-
         alert.getButtonTypes().setAll(confirm, update, buttonTypeCancel);
-
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == confirm){
             addItemsToOrder();
@@ -101,7 +98,7 @@ public class MenuController {
                     resetMenu();
                 }
                 else {
-//                    just leave the JPane
+                    JOptionPane.showConfirmDialog(null, "ID not in the Standards", "Error", JOptionPane.CLOSED_OPTION);
                 }
             }
         } else if (result.get() == update) {
