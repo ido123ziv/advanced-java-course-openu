@@ -1,14 +1,13 @@
 package com.example.mmn13;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import java.util.ArrayList;
 
 import java.util.HashMap;
+import java.util.Optional;
 
 public class MenuController {
 
@@ -23,13 +22,11 @@ public class MenuController {
 
     @FXML
     private CheckBox [] checkBoxes;
-    @FXML
-    protected void orderPressed() {
-        System.out.println("Hello");
-    }
 
+    private Order order;
     public void initialize() {
         Menu menu = new Menu(FilesHandler.getMenu());
+        order = new Order();
         HashMap<mealCourse, ArrayList<Item>> menuItems = menu.getMenu();
         ArrayList<mealCourse> keys = new ArrayList<>(menuItems.keySet());
         types = new TextField[keys.size()];
@@ -64,5 +61,35 @@ public class MenuController {
 
 
 
+    }
+
+    @FXML
+    void orderPressed(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation Dialog");
+        alert.setHeaderText("Are you sure you want to delete this item?");
+        alert.setContentText("This action cannot be undone.");
+
+        ButtonType confirm = new ButtonType("Confirm");
+        ButtonType update = new ButtonType("Update");
+        ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+        alert.getButtonTypes().setAll(confirm, update, buttonTypeCancel);
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == confirm){
+            TextInputDialog td = new TextInputDialog();
+            td.setTitle("please enter your name and ID");
+            td.setHeaderText("For example: \n\"Yossi123456789\"");
+            td.setContentText("Name: ");
+            Optional<String> fileName = td.showAndWait();
+            order.closeOrder(String.valueOf(fileName));
+            order = new Order();
+
+        } else if (result.get() == update) {
+            // do something else
+        } else {
+            order = new Order();
+        }
     }
 }
