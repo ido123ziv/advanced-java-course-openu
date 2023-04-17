@@ -11,11 +11,11 @@ The ID validation is made with the Regex: `[a-zA-Z]+\d{9}`, let's break it down:
 * ID is a set of characters and then a 9-digit number, if fail to supply an error message will pop.
 
 ## Examples
-success run:
+success run:            
 ![Menu](menu.jpg?raw=true)
-confirm:                
+confirm:                            
 ![confirm](confirm.jpg?raw=true)
-id input:                   
+id input:                             
 ![id-input](name%20input.jpg?raw=true)
 
 
