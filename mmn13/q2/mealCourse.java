@@ -1,4 +1,4 @@
-Label
+
 
 public enum mealCourse {
     Appetizer,

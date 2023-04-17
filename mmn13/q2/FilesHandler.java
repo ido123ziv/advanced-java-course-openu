@@ -1,4 +1,4 @@
-Label
+
 import javafx.stage.FileChooser;
 
 import java.io.*;
