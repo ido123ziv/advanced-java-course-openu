@@ -28,8 +28,14 @@ public class Order {
     }
 
     public void closeOrder(String name){
-        FilesHandler.saveToFile(name, this.items.toString());
+        StringBuilder order = new StringBuilder();
+        for (Item item : this.items){
+            order.append("Item: ").append(item.getDescription()).append("\nType: ").append(item.getType().name()).append("\nAmount: ").append((int)item.getPrice()).append("\n");
+        }
+        FilesHandler.saveToFile(name, order.toString());
     }
 
-
+    public ArrayList<Item> getItems() {
+        return items;
+    }
 }
