@@ -1,5 +1,3 @@
-package q1;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -30,10 +28,10 @@ public class SudokoController {
     private boolean isGameOn = false;
 
     /**
-     * Function use to initialize vars on the start and also used as a listener to events (clicks, etc.)
+     * This function initialize the variabless on launch and adding a listener to events (clicks, etc.)
      */
     public void initialize() {
-        //Initialize arrays that will be use to check if we can enter new number
+        // Initializin arrays
         rowCells = new int[SIZE];
         colCells = new int[SIZE];
         blockCells = new int[SIZE];
@@ -45,11 +43,11 @@ public class SudokoController {
             textFields[i] = new TextField("");
             textFields[i].setId(String.valueOf(i));
             textFields[i].setPrefSize(grid.getPrefWidth() / 9, grid.getPrefHeight() / 9);
-            // Anonymous function that handle get the user input inside the textfields
+            // handle actions inside the textfields
             textFields[i].setOnAction(e -> {
                 textField = (TextField) e.getSource();
                 String text = textField.getText();
-                if (text == "")
+                if (Objects.equals(text, ""))
                     countToFinish--;
                 if (isGameOn) {
                     String style = textField.getStyle();
@@ -76,8 +74,7 @@ public class SudokoController {
                         }
                     }
                 } catch (NumberFormatException nfe) {
-                    System.out.println(textField.getText());
-                    JOptionPane.showConfirmDialog(null, "You are wrong!", "Error", JOptionPane.CLOSED_OPTION);
+                    JOptionPane.showConfirmDialog(null, "Ilegal Input!", "Error", JOptionPane.CLOSED_OPTION);
                     textField.clear();
                 }
             });
@@ -104,17 +101,17 @@ public class SudokoController {
     }
 
     /**
-     * Code used to do all the validation needed for the suduku logic
+     * validation against the suduku logic
      * Row, Columns and block logic to make sure we can put the new number in this place
      *
      * @param button
-     * @return
+     * @return whether the input is ok
      */
     private boolean validateLegit(TextField button) {
         row = Integer.parseInt(button.getId()) / 9;
         col = Integer.parseInt(button.getId()) % 9;
-        block = row / 3 * 3 + col / 3; // Will give us the block number
-        // To check if the new number is already found in the specific col / row
+        block = row / 3 * 3 + col / 3; // extract the block number
+        // now need to check if the new number is already found in the specific col / row
         int cntRow = 0;
         int cntCol = 0;
         int cntBlock = 0;
@@ -122,11 +119,11 @@ public class SudokoController {
 
         // Fill column and row arrays
         for (int i = 0; i < SIZE; i++) {
-            if (textFields[i + row * SIZE].getText() != "")
+            if (!Objects.equals(textFields[i + row * SIZE].getText(), ""))
                 rowCells[i] = Integer.parseInt(textFields[i + row * SIZE].getText());
             else
                 rowCells[i] = 0;
-            if (textFields[col + i * SIZE].getText() != "")
+            if (!Objects.equals(textFields[col + i * SIZE].getText(), ""))
                 colCells[i] = Integer.parseInt(textFields[col + i * SIZE].getText());
             else
                 colCells[i] = 0;
@@ -135,8 +132,8 @@ public class SudokoController {
         // Fill Blocks array
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                if (textFields[j + block * 3 + i * SIZE].getText() != "")
-                    blockCells[temp] = Integer.parseInt(textFields[j + block * 3 + i * SIZE].getText());
+                if (!Objects.equals(textFields[j + block * 9 + i * SIZE].getText(), ""))
+                    blockCells[temp] = Integer.parseInt(textFields[j + block * 9 + i * SIZE].getText());
                 else
                     blockCells[temp] = 0;
                 temp++;
@@ -155,21 +152,17 @@ public class SudokoController {
             return false;
         else if (cntCol > 1)
             return false;
-        else if (cntBlock > 1)
-            return false;
-        else
-            return true;
+        else return cntBlock <= 1;
     }
 
     /**
      * When set button is pressed lock the table the user created and start the game
-     *
-     * @param event
+     * @param event -> the event that triggered the action
      */
     @FXML
     void setPressed(ActionEvent event) {
         for (int i = 0; i < SIZE * SIZE; i++) {
-            if (textFields[i].getText() != "")
+            if (!Objects.equals(textFields[i].getText(), "")){
                 textFields[i].setEditable(false);
             setBtn.setDisable(true);
         }
@@ -178,8 +171,7 @@ public class SudokoController {
 
     /**
      * When clear pressed clean the board and reset the buttons
-     *
-     * @param event
+     * @param event  -> the event that triggered the action
      */
     @FXML
     void clearPressed(ActionEvent event) {
@@ -190,7 +182,7 @@ public class SudokoController {
         }
         countToFinish = 0;
         helpArr = new boolean[SIZE * SIZE];
-        //initialize();
+
     }
 }
 
