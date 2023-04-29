@@ -1,36 +1,49 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 
-public class SortedGroup<E extends Comparable>{
-    private ArrayList<E> sortedList;
+public class SortedGroup<E extends Comparable<E>> extends ArrayList<E>{
 
     public SortedGroup(){
-        this.sortedList = new ArrayList<E>();
+        super();
     }
 
-    public void add(Comparable<E> item){
+    public boolean add(E item){
         Boolean isAdded = false;
-        for (int i =0; i <= this.sortedList.size(); i ++){
-            if (sortedList.get(i).compareTo(item) <= 0){
-                this.sortedList.add(i, (E) item);
+        for (int i =0; i <= this.size(); i ++){
+            if (this.get(i).compareTo(item) <= 0){
+                this.add(i, item);
                 isAdded = true;
                 break;
             }
         }
         if (!isAdded)
-            this.sortedList.add((E) item);
+            this.add(item);
+        return true;
     }
-
-    public int remove(Comparable<E> item){
+    public int remove(E item){
         int counter = 0;
-        for (int i =0; i <= this.sortedList.size(); i ++){
-            if (sortedList.get(i).compareTo(item) == 0){
-                this.sortedList.remove(i);
+        for (int i =0; i <= this.size(); i ++){
+            if (this.get(i).compareTo(item) == 0){
+                this.remove(i);
                 counter++;
             }
-            if (sortedList.get(i).compareTo(item) > 0){
+            if (this.get(i).compareTo(item) > 0){
                 break;
             }
         }
         return counter;
+    }
+    public Iterator<E> iterator(){
+        return this.iterator();
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder s = new StringBuilder();
+        for (E item: this){
+            s.append(item.toString());
+        }
+        return s.toString();
+
     }
 }
