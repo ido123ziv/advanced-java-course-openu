@@ -11,6 +11,15 @@ public class Utils {
         }
         return mat;
     }
+    public static int [] [] resultMatrixGenerator(int rowsCount, int colsCount ){
+        int[][] mat = new int[rowsCount][colsCount];
+        for (int i = 0; i < rowsCount; i ++){
+            for (int j = 0; j < colsCount; j ++){
+                mat[i][j] = 0;
+            }
+        }
+        return mat;
+    }
 
     public static void printMat(int [][] mat){
         for (int i = 0; i < mat.length; i++){

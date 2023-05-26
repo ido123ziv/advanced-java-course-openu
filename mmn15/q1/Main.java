@@ -4,9 +4,12 @@ import java.util.Date;
 public class Main {
 
     public static void main(String [] args){
-        int [][] mat1 = Utils.matrixGenerator(5,7);
-        int [][] mat2 = Utils.matrixGenerator(7,8);
-        int [][] result = new int[mat1.length][mat2[0].length];
+        int [][] mat1 = Utils.matrixGenerator(5,3);
+        int [][] mat2 = Utils.matrixGenerator(3,4);
+        int [][] result = Utils.resultMatrixGenerator(mat1.length,mat2[0].length);
+
+        System.out.println("mat1.length: " + mat1.length + " mat1[0].length: " + mat1[0].length);
+
 
         System.out.println("Printing Arrays: \n------------------");
         System.out.println("mat1: ");
