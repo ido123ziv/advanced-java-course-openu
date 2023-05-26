@@ -1,4 +1,5 @@
 package q1;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Main {
@@ -19,7 +20,7 @@ public class Main {
         System.out.println("----------------\n");
         Date start = new Date();
 
-        ThreadsCreator.multiply(mat1,mat2, result);
+        multiply(mat1,mat2, result);
 
         Date end = new Date();
         System.out.println("Process took: " + (end.getTime() - start.getTime()) + " milliseconds" );
@@ -27,7 +28,28 @@ public class Main {
         Utils.printMat(result);
     }
 
-
+    public static void multiply(int [][] matrix1, int [][] matrix2,int [][] result){
+        if (matrix1[0].length != matrix2.length)
+            System.out.println("Can't Multiply!");
+        else {
+//            ArrayList<Thread> threadsList = new ArrayList<>();
+            ThreadsCreator tc = new ThreadsCreator(result);
+            int matrix1Rows = matrix1.length;
+            int matrix2Cols = matrix2[0].length;
+            RowMultiplyJob[][] rowMultiplyJobs = new RowMultiplyJob[matrix1Rows][matrix2Cols];
+            System.out.println("rows: " + matrix1Rows + " cols: " + matrix2Cols + " mult " + (matrix1Rows * matrix2Cols));
+            for (int i =0; i < matrix1Rows; i ++) {
+                for (int j = 0; j < matrix2Cols; j ++){
+                    rowMultiplyJobs[i][j] = new RowMultiplyJob(result, matrix1, matrix2, i , j, tc);
+                    rowMultiplyJobs[i][j].start();
+//                    Thread thread = new Thread(task);
+//                    thread.start();
+//                    threadsList.add(thread);
+                }
+            }
+            tc.waitForAll();
+        }
+    }
 
 
 }
