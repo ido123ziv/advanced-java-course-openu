@@ -15,7 +15,7 @@ public class ThreadsCreator {
 //            for (int i = 0; i < (matrix1Rows * matrix2Cols); i++){
             for (int i =0; i < matrix1Rows; i ++) {
                 for (int j = 0; j < matrix2Cols; j ++){
-                    System.out.println("current row: " + i +  " currentCol: " + j );
+//                    System.out.println("current row: " + i +  " currentCol: " + j );
                     RowMultiplyJob task = new RowMultiplyJob(result, matrix1, matrix2, i , j);
                     Thread thread = new Thread(task);
                     thread.start();

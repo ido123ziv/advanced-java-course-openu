@@ -23,10 +23,22 @@ public class Utils {
 
     public static void printMat(int [][] mat){
         for (int i = 0; i < mat.length; i++){
+            System.out.print("|");
             for (int j = 0; j < mat[0].length; j++){
-                System.out.print(mat[i][j] + " ");
+                System.out.print(edges(mat[i][j]) + "|");
             }
-            System.out.println("");
+            System.out.println();
         }
+    }
+
+    private static String edges(int num){
+        if (num < 10)
+            return "  " + num + "   ";
+        if (num < 100)
+            return "  " + num + "  ";
+        if (num < 1000)
+            return "  " + num + " ";
+        return " " + num + " ";
+
     }
 }

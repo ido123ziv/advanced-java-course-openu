@@ -8,22 +8,24 @@ public class RowMultiplyJob implements Runnable {
     private final int mat1Row;
     private final int mat2Col;
 
+    private final int id;
+
     public RowMultiplyJob(int[][] resultMatrix,int[][] inMatrix1,int[][] inMatrix2, int currentRow, int currentCol){
         result = resultMatrix;
         matrix1 = inMatrix1;
         matrix2 = inMatrix2;
         mat1Row = currentRow;
         mat2Col = currentCol;
+        id = matrix1.length * currentRow + currentCol;
     }
 
     @Override
     public void run() {
-//        for (int i =0; i < matrix2[0].length; i++){
-//            result[mat1Row][i] = 0;
+        result[mat1Row][mat2Col] = 0;
         for (int j =0; j < matrix1[0].length; j++){
             result[mat1Row][mat2Col] += matrix1[mat1Row][j] * matrix2[j][mat2Col];
         }
-//        }
+        System.out.println("Thread Id: " + id + " got the result: " + result[mat1Row][mat2Col]);
     }
 
 
