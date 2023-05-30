@@ -32,7 +32,6 @@ public class TrafficLightController{
         System.out.println("Initializing!");
         TrafficLightThread ta = new TrafficLightThread(this);
         ta.start();
-//        flip();
     }
 
     public boolean isStop() {
@@ -51,20 +50,42 @@ public class TrafficLightController{
           RightTopCirc.setFill(Color.RED);
           RightBottomCirc.setFill(Color.WHITE);
           LeftBottomCirc.setFill(Color.WHITE);
+
+        TopTopRec.setFill(Color.RED);
+        BottomTopRec.setFill(Color.RED);
+        TopBottomRec.setFill(Color.WHITE);
+        BottomBottomRec.setFill(Color.WHITE);
+
+        LeftTopRec.setFill(Color.WHITE);
+        RightTopRec.setFill(Color.WHITE);
+        RightBottomRec.setFill(Color.LIME);
+        LeftBottomRec.setFill(Color.LIME);
         }
         else{
-          TopTopCirc.setFill(Color.LIME);
-          BottomTopCirc.setFill(Color.LIME);
+          TopTopCirc.setFill(Color.RED);
+          BottomTopCirc.setFill(Color.RED);
           TopBottomCirc.setFill(Color.WHITE);
           BottomBottomCirc.setFill(Color.WHITE);
 
           LeftTopCirc.setFill(Color.WHITE);
           RightTopCirc.setFill(Color.WHITE);
-          RightBottomCirc.setFill(Color.RED);
-          LeftBottomCirc.setFill(Color.RED);
+          RightBottomCirc.setFill(Color.LIME);
+          LeftBottomCirc.setFill(Color.LIME);
+
+            TopTopRec.setFill(Color.WHITE);
+            BottomTopRec.setFill(Color.WHITE);
+            TopBottomRec.setFill(Color.LIME);
+            BottomBottomRec.setFill(Color.LIME);
+
+            LeftTopRec.setFill(Color.RED);
+            RightTopRec.setFill(Color.RED);
+            RightBottomRec.setFill(Color.WHITE);
+            LeftBottomRec.setFill(Color.WHITE);
         }
         side = side * -1;
     }
+
+
 
     public void toStop(){
         stop = true;
