@@ -1,26 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="524.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="q2.TrafficLightController">
     <children>
-        <Circle fx:id="light" fill="WHITE" layoutX="81.0" layoutY="197.0" radius="31.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="LIME" layoutX="81.0" layoutY="259.0" radius="31.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="LIME" layoutX="524.0" layoutY="262.0" radius="31.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fx:id="light1" fill="WHITE" layoutX="524.0" layoutY="200.0" radius="31.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fx:id="light2" fill="RED" layoutX="300.0" layoutY="45.0" radius="31.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="WHITE" layoutX="300.0" layoutY="107.0" radius="31.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fx:id="light21" fill="RED" layoutX="300.0" layoutY="324.0" radius="31.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="WHITE" layoutX="300.0" layoutY="386.0" radius="31.0" stroke="BLACK" strokeType="INSIDE" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="RED" height="47.0" layoutX="69.0" layoutY="290.0" stroke="BLACK" strokeType="INSIDE" width="25.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="47.0" layoutX="69.0" layoutY="338.0" stroke="BLACK" strokeType="INSIDE" width="25.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="RED" height="47.0" layoutX="512.0" layoutY="291.0" stroke="BLACK" strokeType="INSIDE" width="25.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="47.0" layoutX="512.0" layoutY="339.0" stroke="BLACK" strokeType="INSIDE" width="25.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="47.0" layoutX="288.0" layoutY="138.0" stroke="BLACK" strokeType="INSIDE" width="25.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="LIME" height="47.0" layoutX="288.0" layoutY="186.0" stroke="BLACK" strokeType="INSIDE" width="25.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="47.0" layoutX="287.0" layoutY="417.0" stroke="BLACK" strokeType="INSIDE" width="25.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="LIME" height="47.0" layoutX="287.0" layoutY="465.0" stroke="BLACK" strokeType="INSIDE" width="25.0" />
+        <Circle fx:id="LeftTopCirc" fill="WHITE" layoutX="81.0" layoutY="197.0" radius="31.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="LeftBottomCirc" fill="LIME" layoutX="81.0" layoutY="259.0" radius="31.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="RightBottomCirc" fill="LIME" layoutX="524.0" layoutY="262.0" radius="31.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="RightTopCirc" fill="WHITE" layoutX="524.0" layoutY="200.0" radius="31.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="TopTopCirc" fill="RED" layoutX="300.0" layoutY="45.0" radius="31.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="TopBottomCirc" fill="WHITE" layoutX="300.0" layoutY="107.0" radius="31.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="BottomTopCirc" fill="RED" layoutX="300.0" layoutY="324.0" radius="31.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="BottomBottomCirc" fill="WHITE" layoutX="300.0" layoutY="386.0" radius="31.0" stroke="BLACK" strokeType="INSIDE" />
+      <Rectangle fx:id="LeftTopRec" arcHeight="5.0" arcWidth="5.0" fill="RED" height="47.0" layoutX="69.0" layoutY="290.0" stroke="BLACK" strokeType="INSIDE" width="25.0" />
+      <Rectangle fx:id="LeftBottomRec" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="47.0" layoutX="69.0" layoutY="338.0" stroke="BLACK" strokeType="INSIDE" width="25.0" />
+      <Rectangle fx:id="RightTopRec" arcHeight="5.0" arcWidth="5.0" fill="RED" height="47.0" layoutX="512.0" layoutY="291.0" stroke="BLACK" strokeType="INSIDE" width="25.0" />
+      <Rectangle fx:id="RightBottomRec" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="47.0" layoutX="512.0" layoutY="339.0" stroke="BLACK" strokeType="INSIDE" width="25.0" />
+      <Rectangle fx:id="TopTopRec" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="47.0" layoutX="288.0" layoutY="138.0" stroke="BLACK" strokeType="INSIDE" width="25.0" />
+      <Rectangle fx:id="TopBottomRec" arcHeight="5.0" arcWidth="5.0" fill="LIME" height="47.0" layoutX="288.0" layoutY="186.0" stroke="BLACK" strokeType="INSIDE" width="25.0" />
+      <Rectangle fx:id="BottomTopRec" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="47.0" layoutX="287.0" layoutY="417.0" stroke="BLACK" strokeType="INSIDE" width="25.0" />
+      <Rectangle fx:id="BottomBottomRec" arcHeight="5.0" arcWidth="5.0" fill="LIME" height="47.0" layoutX="287.0" layoutY="465.0" stroke="BLACK" strokeType="INSIDE" width="25.0" />
+      <Button layoutX="86.0" layoutY="51.0" mnemonicParsing="false" onAction="#toStop" text="Button" />
     </children>
 
 </AnchorPane>
