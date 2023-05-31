@@ -1,12 +1,27 @@
 package q2;
-
+/**
+ * Thread Class for Traffic Light
+ * Author: Ido Ziv 2023
+ */
 public class TrafficLightThread extends Thread{
-    private TrafficLightController trafficGUI;
+    private final TrafficLightController trafficGUI; // using this object to let thread access attributes of controller
+
+    /**
+     * Constructor of TrafficLightThread
+     * Creates a Thread for application
+     * @param gui -> which controller to use
+     */
     public TrafficLightThread(TrafficLightController gui) {
         trafficGUI = gui;
     }
+
+    /**
+     * Implements the thread action of run
+     * runs a loop until broken to change the traffic lights
+     * checks current timeout and update accordingly
+     * flashes pedestrians light for twice the time of the timout, if timeout is 6 second will flash 12 times
+     */
     public void run() {
-        System.out.println("Thread Running!");
         super.run();
         int countToTen = 0;
         int timeout;
@@ -15,7 +30,6 @@ public class TrafficLightThread extends Thread{
                 timeout = trafficGUI.redTime;
             else
                 timeout = trafficGUI.greenTime;
-            System.out.println("Timeout: " + timeout);
             if (countToTen > (timeout * 2)){
                 trafficGUI.flip();
                 countToTen = 0;
