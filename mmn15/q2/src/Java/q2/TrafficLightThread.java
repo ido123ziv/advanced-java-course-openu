@@ -9,9 +9,14 @@ public class TrafficLightThread extends Thread{
         System.out.println("Thread Running!");
         super.run();
         int countToTen = 0;
-        while (!trafficGUI.isStop()){
-//            System.out.println("Whiling!");
-            if (countToTen > 10){
+        int timeout;
+        while (!trafficGUI.isStop){
+            if (trafficGUI.side > 0)
+                timeout = trafficGUI.redTime;
+            else
+                timeout = trafficGUI.greenTime;
+            System.out.println("Timeout: " + timeout);
+            if (countToTen > (timeout * 2)){
                 trafficGUI.flip();
                 countToTen = 0;
             }
@@ -19,7 +24,7 @@ public class TrafficLightThread extends Thread{
                 countToTen ++;
             trafficGUI.flash();
             try {
-                Thread.sleep(300);
+                Thread.sleep(500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

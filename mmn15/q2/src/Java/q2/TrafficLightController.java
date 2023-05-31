@@ -1,6 +1,9 @@
 package q2;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Slider;
+import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
@@ -10,38 +13,32 @@ import java.util.Objects;
 public class TrafficLightController{
 
 
+    @FXML
     public Circle LeftTopCirc, RightTopCirc, TopBottomCirc, TopTopCirc;
     public Circle LeftBottomCirc,  RightBottomCirc, BottomTopCirc, BottomBottomCirc;
     public Rectangle LeftTopRec, RightTopRec, TopTopRec, BottomTopRec;
     public Rectangle  LeftBottomRec , RightBottomRec, TopBottomRec, BottomBottomRec;
-    @FXML
-    private Circle[] topCirc; // top
-    private Circle[] bottomCirc;
-    private Circle[] northSouthTop;
+    public Slider redScroll;
+    public Slider greenScroll;
+    public TextField redTimeText;
+    public TextField greenTimeText;
 
-    private Rectangle[] topRec;
-    private Rectangle[] bottomRec;
-    private int side;
-    private boolean stop;
+    public int redTime = 3, greenTime = 3;
+    public int side;
+    public boolean isStop;
 
-    public void initialize() throws InterruptedException {
-        topCirc = new Circle[] {LeftBottomCirc, RightTopCirc, TopTopCirc, BottomBottomCirc};
-        bottomCirc = new Circle[] {BottomTopCirc, BottomBottomCirc, LeftBottomCirc, RightBottomCirc};
-        topRec = new Rectangle[] {LeftTopRec, RightTopRec, TopTopRec, BottomTopRec};
-        bottomRec = new Rectangle[]{LeftBottomRec, RightBottomRec, TopBottomRec, BottomBottomRec};
+    public void initialize() {
         side = 1;
-        stop = false;
+        isStop = false;
         System.out.println("Initializing!");
         TrafficLightThread ta = new TrafficLightThread(this);
+        redTimeText.setText("Red wait: " + (redTime) + " Seconds");
+        greenTimeText.setText("Green wait: " + (greenTime) + " Seconds");
         ta.start();
     }
 
-    public boolean isStop() {
-        return stop;
-    }
-
     public void flip(){
-        System.out.println("Flipping!");
+//        System.out.println("Flipping!");
         if (side > 0){
           TopTopCirc.setFill(Color.WHITE);
           BottomTopCirc.setFill(Color.WHITE);
@@ -117,18 +114,18 @@ public class TrafficLightController{
     }
 
     public void toStop(){
-        stop = !stop;
-//        System.out.println("-------------------------");
-//        System.out.println("TopTopCirc: " + ColorName(TopTopCirc.getFill().toString()));
-//        System.out.println("BottomTopCirc: " + ColorName(BottomTopCirc.getFill().toString()));
-//        System.out.println("TopBottomCirc: " + ColorName(TopBottomCirc.getFill().toString()));
-//        System.out.println("BottomBottomCirc: " + ColorName(BottomBottomCirc.getFill().toString()));
-//        System.out.println("LeftTopCirc: " + ColorName(LeftTopCirc.getFill().toString()));
-//        System.out.println("RightTopCirc: " + ColorName(RightTopCirc.getFill().toString()));
-//        System.out.println("RightBottomCirc: " + ColorName(RightBottomCirc.getFill().toString()));
-//        System.out.println("LeftBottomCirc: " + ColorName(LeftBottomCirc.getFill().toString()));
-//        System.out.println("-------------------------");
-//        stop = false;
+        isStop = !isStop;
     }
 
+    public void onSliderChanged(MouseEvent mouseEvent) {
+        Slider s = (Slider) mouseEvent.getSource();
+        if (Objects.equals(s.getId(), redScroll.getId())){
+            redTime = (int) redScroll.getValue();
+            redTimeText.setText("Red wait: " + (redTime) + " Seconds");
+        }
+        else {
+            greenTime = (int) greenScroll.getValue();
+            greenTimeText.setText("Green wait: " + (greenTime) + " Seconds");
+        }
+    }
 }

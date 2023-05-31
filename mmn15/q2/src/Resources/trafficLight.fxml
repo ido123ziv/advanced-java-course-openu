@@ -22,7 +22,11 @@
       <Rectangle fx:id="TopBottomRec" arcHeight="5.0" arcWidth="5.0" fill="LIME" height="47.0" layoutX="288.0" layoutY="186.0" stroke="BLACK" strokeType="INSIDE" width="25.0" />
       <Rectangle fx:id="BottomTopRec" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="47.0" layoutX="287.0" layoutY="417.0" stroke="BLACK" strokeType="INSIDE" width="25.0" />
       <Rectangle fx:id="BottomBottomRec" arcHeight="5.0" arcWidth="5.0" fill="LIME" height="47.0" layoutX="287.0" layoutY="465.0" stroke="BLACK" strokeType="INSIDE" width="25.0" />
-      <Button layoutX="86.0" layoutY="51.0" mnemonicParsing="false" onAction="#toStop" text="Stop Start" />
+      <Button layoutX="35.0" layoutY="14.0" mnemonicParsing="false" onAction="#toStop" text="Stop Start" />
+      <Slider fx:id="redScroll" blockIncrement="1.0" layoutX="442.0" layoutY="107.0" majorTickUnit="2.0" max="15.0" min="3.0" onMouseReleased="#onSliderChanged" />
+      <Slider fx:id="greenScroll" blockIncrement="1.0" layoutX="11.0" layoutY="107.0" majorTickUnit="2.0" max="15.0" min="3.0" onMouseReleased="#onSliderChanged" />
+      <TextField fx:id="redTimeText" layoutX="436.0" layoutY="78.0" prefHeight="25.0" prefWidth="160.0" text="Red Wait Time" />
+      <TextField fx:id="greenTimeText" layoutX="20.0" layoutY="78.0" prefHeight="25.0" prefWidth="167.0" text="Green Wait Time" />
     </children>
 
 </AnchorPane>
