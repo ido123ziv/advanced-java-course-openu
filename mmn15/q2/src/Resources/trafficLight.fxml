@@ -22,7 +22,7 @@
       <Rectangle fx:id="TopBottomRec" arcHeight="5.0" arcWidth="5.0" fill="LIME" height="47.0" layoutX="288.0" layoutY="186.0" stroke="BLACK" strokeType="INSIDE" width="25.0" />
       <Rectangle fx:id="BottomTopRec" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="47.0" layoutX="287.0" layoutY="417.0" stroke="BLACK" strokeType="INSIDE" width="25.0" />
       <Rectangle fx:id="BottomBottomRec" arcHeight="5.0" arcWidth="5.0" fill="LIME" height="47.0" layoutX="287.0" layoutY="465.0" stroke="BLACK" strokeType="INSIDE" width="25.0" />
-      <Button layoutX="86.0" layoutY="51.0" mnemonicParsing="false" onAction="#toStop" text="Button" />
+      <Button layoutX="86.0" layoutY="51.0" mnemonicParsing="false" onAction="#toStop" text="Stop Start" />
     </children>
 
 </AnchorPane>

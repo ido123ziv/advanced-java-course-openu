@@ -5,6 +5,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
+import java.util.Objects;
+
 public class TrafficLightController{
 
 
@@ -85,10 +87,48 @@ public class TrafficLightController{
         side = side * -1;
     }
 
+    private String ColorName(String colorHex){
+        if (Objects.equals(colorHex, "0xff0000ff")) return "red";
+        if (Objects.equals(colorHex, "0xffffffff")) return "white";
+        return "lime";
+    }
 
+    public void flash(){
+        if (side < 0){
+            if (ColorName(RightBottomRec.getFill().toString()).equals("lime")){
+                RightBottomRec.setFill(Color.WHITE);
+                LeftBottomRec.setFill(Color.WHITE);
+            }
+            else {
+                RightBottomRec.setFill(Color.LIME);
+                LeftBottomRec.setFill(Color.LIME);
+            }
+        }
+        else {
+            if (ColorName(TopBottomRec.getFill().toString()).equals("lime")){
+                TopBottomRec.setFill(Color.WHITE);
+                BottomBottomRec.setFill(Color.WHITE);
+            }
+            else {
+                TopBottomRec.setFill(Color.LIME);
+                BottomBottomRec.setFill(Color.LIME);
+            }
+        }
+    }
 
     public void toStop(){
-        stop = true;
+        stop = !stop;
+//        System.out.println("-------------------------");
+//        System.out.println("TopTopCirc: " + ColorName(TopTopCirc.getFill().toString()));
+//        System.out.println("BottomTopCirc: " + ColorName(BottomTopCirc.getFill().toString()));
+//        System.out.println("TopBottomCirc: " + ColorName(TopBottomCirc.getFill().toString()));
+//        System.out.println("BottomBottomCirc: " + ColorName(BottomBottomCirc.getFill().toString()));
+//        System.out.println("LeftTopCirc: " + ColorName(LeftTopCirc.getFill().toString()));
+//        System.out.println("RightTopCirc: " + ColorName(RightTopCirc.getFill().toString()));
+//        System.out.println("RightBottomCirc: " + ColorName(RightBottomCirc.getFill().toString()));
+//        System.out.println("LeftBottomCirc: " + ColorName(LeftBottomCirc.getFill().toString()));
+//        System.out.println("-------------------------");
+//        stop = false;
     }
 
 }
